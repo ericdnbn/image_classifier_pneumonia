@@ -125,6 +125,7 @@ def nn_model(dense_list,
              color='grayscale',
              batch_size=1000,
              process_test=False,
+             input_nodes=64,
              input_activation='relu',
              layer_activation='relu',
              output_activation='sigmoid',
@@ -144,7 +145,7 @@ def nn_model(dense_list,
     nn_model = models.Sequential()
     
     
-    nn_model.add(layers.Dense(64, activation=input_activation, input_shape=(X_train.shape[1],)))
+    nn_model.add(layers.Dense(input_nodes, activation=input_activation, input_shape=(X_train.shape[1],)))
     
     for i, val in enumerate(dense_list):
         nn_model.add(layers.Dense(int(dense_list[i]), 
