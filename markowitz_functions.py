@@ -98,7 +98,7 @@ def preprocess_cnn_data(train_dir,
     
     # Create testing generator if test_dir is provided
     if test_dir:
-        test_generator = ImageDataGenerator(rescale=1./255).flow_from_directory(test_directory, **directory_kwargs)
+        test_generator = ImageDataGenerator(rescale=1./255).flow_from_directory(test_directory, shuffle=False, **directory_kwargs)
 
     if test_dir:
         return train_generator, val_generator, test_generator
