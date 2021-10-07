@@ -131,6 +131,7 @@ dmypy.json
 # MacOS
 *.DS_Store
 
-# Dataset
+# Dataset and models
 *.jpeg
 *.zip
+*.h5
