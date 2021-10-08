@@ -91,6 +91,9 @@ Below is a diagram of our final model, showing the architecture of the layers, a
 
 ![cnn diagram with intermediate layers](images/cnn_diagram)
 
+This diagram was created with [Net2Vis](https://github.com/viscom-ulm/Net2Vis) -- A Visual Grammar for Automatically Generating Publication-Tailored CNN Architecture Visualizations (Alex Bäuerle, Christian van Onzenoodt, and Timo Ropinski at Cornell University)
+
+
 ## Final Evaluation
 
 Our model performed very well by our primary metric (recall), but has a lower accuracy on the testing set than on the validation set. The number of false positives is higher than we expected or would want, so futher iterations of the model would focus on lowering that number. It may even be possible to train another model specifically on misclassified images. The following shows the confusion matrix results after evaluating on our holdout (test) dataset.
@@ -146,3 +149,20 @@ We also recommend consulting with a medical professional, who has experience dia
  - Finally, we would create another neural network to classify chest X-rays of pateints with covid-19 or pneumonia.
 
 
+## For More Information
+
+See the full analysis in the [Jupyter Notebook](./identifying_pneumonia_cxr.ipynb) or review this [presentation](./identifying_pneumonia_cxr_presentation.pdf)
+
+### Structure of Repository:
+
+```
+├── Code (working notebooks)
+├── chest_xray (dataset)
+├── Images (for readme, presentation)
+├── models (saved .h5 files of trained models)
+├── net2vis (model diagram files)
+├── identifying_pneumonia_cxr.ipynb
+├── identifying_pneumonia_cxr_presentation.pdf
+├── project_functions.py
+└── README.md
+```
