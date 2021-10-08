@@ -68,7 +68,7 @@ To improve on our first simple model, we iterated over several more models. The 
  - Using Adam optimizer function and specify learning rate to control stability during training
  - Adding class weights to account for imbalanced classes distribution
 
-![confusion matrix](images/nn_confusion.png)
+![confusion matrix](images/nn_confusion_matrix.png)
 
 Our changes to the model both reduced overfitting and increased performance on recall and general accuracy, bringing accuracy up to 94.5% and recall to 95.6%.
 
