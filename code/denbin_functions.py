@@ -401,6 +401,7 @@ def cnn_model(cnn_filters,
               input_shape=(256,256,1),
               pool_size=(2,2),
               five_by_five=False,
+              f_by_f_filters=64,
               five_activation='relu',
               l2_rate=0.01,
               conv_normal=False,
@@ -425,6 +426,11 @@ def cnn_model(cnn_filters,
               batch_size=50,
               visualize=True):
     
+'''
+This function allows you to customize many features of Convulational Neural Network,
+including the number of convolution and dense layers, kernel size and activation functions
+in different layers.
+'''
     
     if not process_test:
         train_generator, val_generator = cnn_preprocessing(batch_size=batch_size, process_test=process_test)
@@ -450,7 +456,7 @@ def cnn_model(cnn_filters,
     
     if five_by_five:
     
-        cnn_model.add(Conv2D(64, (5, 5), activation=five_activation, kernel_regularizer=l2(l2=l2_rate)))
+        cnn_model.add(Conv2D(ff_filters, (5x5), activation=five_activation, kernel_regularizer=l2(l2=l2_rate)))
     
     
     for i, val in enumerate(filters):
