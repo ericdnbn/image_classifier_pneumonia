@@ -34,9 +34,9 @@ The following file structure provides the ground truth labeling needed to train 
          └──PNEUMONIA
 ```
 
-Pneumonia in the lungs presents differently depending on its source (bacterial or viral), but both present as a cloudiness or occlusion on the X-ray image. Bacterial pneumonia tends to consolidate in one area, or lobe, of the lungs, while viral pneumonia tends to be more diffuse. 
+Pneumonia in the lungs presents differently depending on its source (bacterial or viral infection), but both present as a cloudiness or occlusion on the X-ray image. Bacterial pneumonia tends to consolidate locally in one area, or lobe, of the lungs, while viral pneumonia tends to be more diffuse. 
 
-One limitation of this dataset is that all the X-ray images are from children. It's possible that our results are not generalizable or our model's success applicable to adult cases of pneumonia.
+One limitation of this dataset is that all the X-ray images are from children. It's possible that our model results are not generalizable to adult cases of pneumonia.
 
 There is a clear over-representation of target class images in the data, which presents an issue for modeling, even though we do want to emphasize correct prediction of the target class over general accuracy. We will experiment with adding in parameters to account for this, such as `class_weight`, as the current distribution is about 3:1 in favor of the target class (23% Normal, 77% Pneumonia).
 
@@ -137,6 +137,7 @@ We recommend that this model is used as part of a medical professional's diagnos
 
 We also recommend consulting with a medical professional, who has experience diagnosing a patient with pneumonia by looking at chest X-rays, about false positive and false negative images to determine patterns they look for, and ultimately what the model is missing.
 
+Finally, we recommend that this model be used to increase the speed at which medical professionals determine the results of chest X-rays.
 
 ### Possible Next Steps
 
