@@ -40,22 +40,22 @@ One limitation of this dataset is that all the X-ray images are from children. I
 
 There is a clear over-representation of target class images in the data, which presents an issue for modeling, even though we do want to emphasize correct prediction of the target class over general accuracy. We will experiment with adding in parameters to account for this, such as `class_weight`, as the current distribution is about 3:1 in favor of the target class (23% Normal, 77% Pneumonia).
 
-![image_class_distrib](images/image_class_distrib)
+![image_class_distrib](images/image_class_distrib.png)
 
 All images are single-channel (black and white, not RGB) and almost all have an 'R' to designate the right-hand side lung. Typically, pneumonia lungs look "cloudy" or "fuzzy" compared to Normal.
 
-![normal](images/normal_lungs)
+![normal](images/normal_lungs.png)
 
 From Kaggle:
 > The normal chest X-ray depicts clear lungs without any areas of abnormal opacification in the image. Bacterial pneumonia typically exhibits a focal lobar consolidation, in this case in the right upper lobe, whereas viral pneumonia manifests with a more diffuse ‘‘interstitial’’ pattern in both lungs.
 
-![pneumonia](images/lungs_with_pneumonia)
+![pneumonia](images/lungs_with_pneumonia.png)
 
 Essentially, this means that bacterial pneumonia typically gathers in one area of the lungs, while viral penumonia is more spread out.
 
 ## Modeling with neural networks
 
-![fsm](images/dense_nn)
+![fsm](images/dense_nn.png)
 
 Our first simple model consists of a basic fully connected dense neural network with only 1 hidden layer, plus an output layer. 
 This model serves mainly as a proof of concept and provides baseline accuracy and recall scores.
@@ -68,7 +68,7 @@ To improve on our first simple model, we iterated over several more models. The 
  - Using Adam optimizer function and specify learning rate to control stability during training
  - Adding class weights to account for imbalanced classes distribution
 
-![confusion matrix](images/nn_confusion)
+![confusion matrix](images/nn_confusion.png)
 
 Our changes to the model both reduced overfitting and increased performance on recall and general accuracy, bringing accuracy up to 94.5% and recall to 95.6%.
 
@@ -85,11 +85,11 @@ We continued to iterate with CNN models, adjusting various layers and parameters
  
 Collectively, we iterated on over a dozen models, adjusting these parameters among others. Our final model has the following architecture:
 
-![final model summary](images/cnn_summary)
+![final model summary](images/cnn_summary.png)
 
 Below is a diagram of our final model, showing the architecture of the layers, as well as images surfaced from the intermediate layers. This shows that our model is attending to features located within the lungs on the x-ray images.
 
-![cnn diagram with intermediate layers](images/cnn_diagram)
+![cnn diagram with intermediate layers](images/cnn_diagram.png)
 
 This diagram was created with [Net2Vis](https://github.com/viscom-ulm/Net2Vis) -- A Visual Grammar for Automatically Generating Publication-Tailored CNN Architecture Visualizations (Alex Bäuerle, Christian van Onzenoodt, and Timo Ropinski at Cornell University)
 
@@ -98,7 +98,7 @@ This diagram was created with [Net2Vis](https://github.com/viscom-ulm/Net2Vis) -
 
 Our model performed very well by our primary metric (recall), but has a lower accuracy on the testing set than on the validation set. The number of false positives is higher than we expected or would want, so futher iterations of the model would focus on lowering that number. It may even be possible to train another model specifically on misclassified images. The following shows the confusion matrix results after evaluating on our holdout (test) dataset.
 
-![final confusion matrix](images/cnn_confusion)
+![final confusion matrix](images/cnn_confusion.png)
 
 On unseen testing data, our best best model had 98.46% recall and 80.93% accuracy. Out of 624 images in the test set, the model predicted 6 false negatives and 112 false positive, with 506 correct predictions. We suspect that the low accuracy score is due to imbalance in the dataset. Chest X-rays of patients with pneumonia made up 62.5% of the test set, while chest X-rays of healthy patients made up 37.5% of the test set. 
 
@@ -109,9 +109,9 @@ On unseen testing data, our best best model had 98.46% recall and 80.93% accurac
 
 In an effort to uncover the reason behind the high false positive rate, we identify and visualize the images that the model misclassified. Perhaps we can see if any patterns can be identified that may represent obvious errors in the model.
 
-![false positive images](images/false_positives)
+![false positive images](images/false_positives.png)
 
-![false negative images](images/false_negatives)
+![false negative images](images/false_negatives.png)
 
 We lack the domain knowledge expertise to identify or interpret patterns in the misclassified images, although there don't seem to be any obvious patterns. Ideally, we would partner with medical professionals to see what patterns may exist that are being caught and misclassified by the model. It is notable that 5 out of the 6 false negatives were identified as showing bacterial pneumonia, which is supposed to be easier to diagnose or identify on a scan than viral pneumonia. This suggests that our model is just being over-sensitive to patterns associated with pneumonia, or is overfit to the training dataset.
 
@@ -121,11 +121,11 @@ In order to confirm the model is analyzing truly important data (i.e., the lungs
 
 The following image shows the first activation layer--in other words, the first `Conv2D` convolutional layer in our final model--when the above image is fed into the model.
 
-![first intermediate layer](images/first_conv_layer)
+![first intermediate layer](images/first_conv_layer.png)
 
 Now, rather than examining all channels from one layer, let's look at one channel from *each* layer. Note the name above each image to identify which layer of the model it comes from.
 
-![all layers](images/all_intermediate_layers)
+![all layers](images/all_intermediate_layers.png)
 
 A second iteration of these visualizations with another image from the dataset can be found in the notebook. It does not appear from this albiet brief exploration that the model is obviously focusing on any particular irrelevant detail. However, further exploration could uncover systemic errors or other issues in the model. Ideally, we would partner with medical professionals who could help us better assess what features or patterns the model is likely identifying in the normal and target pneumonia class images.
 
