@@ -47,7 +47,7 @@ All images are single-channel (black and white, not RGB) and almost all have an 
 ![normal](images/normal_lungs.png)
 
 From Kaggle:
-> The normal chest X-ray depicts clear lungs without any areas of abnormal opacification in the image. Bacterial pneumonia typically exhibits a focal lobar consolidation, in this case in the right upper lobe, whereas viral pneumonia manifests with a more diffuse ‘‘interstitial’’ pattern in both lungs.
+> The normal chest X-ray depicts clear lungs without any areas of abnormal opacification in the image. Bacterial pneumonia typically exhibits a focal lobar consolidation \[...] whereas viral pneumonia manifests with a more diffuse ‘‘interstitial’’ pattern in both lungs.
 
 ![pneumonia](images/lungs_with_pneumonia.png)
 
