@@ -13,7 +13,7 @@ Pneumonia can also be difficult to diagnose as there is no "gold standard" indic
 
 <img src="images/infographic-pediatricpneumonia.jpg" alt="pneumonia infographic from WHO" width="400"/>
 
-Scans can be ambiguous and difficult to interpret, presenting another source of error. According to a study in the Journal of the American Academy of Pediatrics, 8.9% of children with a negative CXR were nonetheless diagnosed with pneumonia ([source](https://pediatrics.aappublications.org/content/142/3/e20180236)). This means that the doctors in the study correctly diagnosed patients with pneumonia 91.1% of the time. This postive identification rate is known in the medical community as "sensitivity" and in the data science community as "recall." We are using recall as our primary metric for success because we want to avoid labeling unhealthy patients as healthy.
+Scans can be ambiguous and difficult to interpret, presenting another source of error. According to a study in the Journal of the American Academy of Pediatrics, of 156 children with clinically diagnosed pneumonia, just 78% had positive CXRs, while and 22% had negative CXRs. ([source](https://pediatrics.aappublications.org/content/142/3/e20180236)). This postive identification rate is known in the medical community as "sensitivity" and in the data science community as "recall." We are using recall as our primary metric for success because we want to avoid labeling unhealthy patients as healthy.
 
 This presents a good use case for machine learning image classification models. By training a model to identify CXRs that present positive for pneumonia, we can provide a consistent and powerful tool for medical professionals to use as part of their diagnostic toolkit.
 
