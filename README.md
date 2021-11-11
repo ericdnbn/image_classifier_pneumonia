@@ -40,10 +40,6 @@ One limitation of this dataset is that all the X-ray images are from children. I
 
 There is a clear over-representation of target class images in the data, which presents an issue for modeling, even though we do want to emphasize correct prediction of the target class over general accuracy. We will experiment with adding in parameters to account for this, such as `class_weight`, as the current distribution is about 3:1 in favor of the target class (23% Normal, 77% Pneumonia).
 
-![image_class_distrib](images/image_class_distrib.png)
-
-<img src="images/image_class_distrib.png" alt="pneumonia infographic from WHO" align='center'/>
-
 <p align="center">
   <img src=images/image_class_distrib.png />
 </p>
