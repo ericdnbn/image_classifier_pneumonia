@@ -44,6 +44,10 @@ There is a clear over-representation of target class images in the data, which p
 
 <img src="images/image_class_distrib.png" alt="pneumonia infographic from WHO" align='center'/>
 
+<p align="center">
+  <img src=images/image_class_distrib.png />
+</p>
+
 All images are single-channel (black and white, not RGB) and almost all have an 'R' to designate the right-hand side lung. Typically, pneumonia lungs look "cloudy" or "fuzzy" compared to Normal.
 
 ![normal](images/normal_lungs.png)
