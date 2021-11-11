@@ -4,6 +4,10 @@
 
 ![healthy vs penumonia cxr](images/healthy_vs_pneumonia_cxr.png)
 
+<p align="center">
+  <img src=images/healthy_vs_pneumonia_cxr.png />
+</p>
+
 
 ## Business Understanding
 
@@ -12,6 +16,10 @@ Pneumonia is the presence of liquid in the lungs as a result of bacterial or vir
 Pneumonia can also be difficult to diagnose as there is no "gold standard" indication for it. Medical professionals use a combination of symptoms and scans, such as chest x-rays (CXR) to make a positive diagnosis.
 
 <img src="images/infographic-pediatricpneumonia.jpg" alt="pneumonia infographic from WHO" width="400"/>
+
+<p align="center">
+  <img src='images/infographic-pediatricpneumonia.jpg' alt="pneumonia infographic from WHO" width="400" />
+</p>
 
 Scans can be ambiguous and difficult to interpret, presenting another source of error. According to a study in the Journal of the American Academy of Pediatrics, of 156 children with clinically diagnosed pneumonia, just 78% had positive CXRs, while 22% had negative CXRs. ([source](https://pediatrics.aappublications.org/content/142/3/e20180236)). This postive identification rate is known in the medical community as "sensitivity" and in the data science community as "recall." We are using recall as our primary metric for success because we want to avoid labeling unhealthy patients as healthy.
 
