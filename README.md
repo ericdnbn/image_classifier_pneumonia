@@ -49,16 +49,12 @@ There is a clear over-representation of target class images in the data, which p
 
 All images are single-channel (black and white, not RGB) and almost all have an 'R' to designate the right-hand side lung. Typically, pneumonia lungs look "cloudy" or "fuzzy" compared to Normal.
 
-![normal](images/normal_lungs.png)
-
 <p align="center">
   <img src=images/normal_lungs.png />
 </p>
 
 From Kaggle:
 > The normal chest X-ray depicts clear lungs without any areas of abnormal opacification in the image. Bacterial pneumonia typically exhibits a focal lobar consolidation \[...] whereas viral pneumonia manifests with a more diffuse ‘‘interstitial’’ pattern in both lungs.
-
-![pneumonia](images/lungs_with_pneumonia.png)
 
 <p align="center">
   <img src=images/lungs_with_pneumonia.png />
@@ -67,8 +63,6 @@ From Kaggle:
 Essentially, this means that bacterial pneumonia typically gathers in one area of the lungs, while viral penumonia is more spread out.
 
 ## Modeling with neural networks
-
-![fsm](images/dense_nn.png)
 
 <p align="center">
   <img src=images/dense_nn.png />
@@ -84,8 +78,6 @@ To improve on our first simple model, we iterated over several more models. The 
  - Using L2 regularization to avoid overfitting
  - Using Adam optimizer function and specify learning rate to control stability during training
  - Adding class weights to account for imbalanced classes distribution
-
-![confusion matrix](images/nn_confusion_matrix.png)
 
 <p align="center">
   <img src=images/nn_confusion_matrix.png />
@@ -106,15 +98,11 @@ We continued to iterate with CNN models, adjusting various layers and parameters
  
 Collectively, we iterated on over a dozen models, adjusting these parameters among others. Our final model has the following architecture:
 
-![final model summary](images/cnn_summary.png)
-
 <p align="center">
   <img src=images/cnn_summary.png />
 </p>
 
 Below is a diagram of our final model, showing the architecture of the layers, as well as images surfaced from the intermediate layers. This shows that our model is attending to features located within the lungs on the x-ray images.
-
-![cnn diagram with intermediate layers](images/cnn_diagram.png)
 
 <p align="center">
   <img src=images/cnn_diagram.png />
@@ -126,8 +114,6 @@ This diagram was created with [Net2Vis](https://github.com/viscom-ulm/Net2Vis) -
 ## Final Evaluation
 
 Our model performed very well by our primary metric (recall), but has a lower accuracy on the testing set than on the validation set. The number of false positives is higher than we expected or would want, so futher iterations of the model would focus on lowering that number. It may even be possible to train another model specifically on misclassified images. The following shows the confusion matrix results after evaluating on our holdout (test) dataset.
-
-![final confusion matrix](images/cnn_confusion.png)
 
 <p align="center">
   <img src=images/cnn_confusion.png />
@@ -142,13 +128,9 @@ On unseen testing data, our best best model had 98.46% recall and 80.93% accurac
 
 In an effort to uncover the reason behind the high false positive rate, we identify and visualize the images that the model misclassified. Perhaps we can see if any patterns can be identified that may represent obvious errors in the model.
 
-![false positive images](images/false_positives.png)
-
 <p align="center">
   <img src=images/false_positives.png />
 </p>
-
-![false negative images](images/false_negatives.png)
 
 <p align="center">
   <img src=images/false_negatives.png />
@@ -162,15 +144,11 @@ In order to confirm the model is analyzing truly important data (i.e., the lungs
 
 The following image shows the first activation layer--in other words, the first `Conv2D` convolutional layer in our final model--when the above image is fed into the model.
 
-![first intermediate layer](images/first_conv_layer.png)
-
 <p align="center">
   <img src=images/first_conv_layer.png />
 </p>
 
 Now, rather than examining all channels from one layer, let's look at one channel from *each* layer. Note the name above each image to identify which layer of the model it comes from.
-
-![all layers](images/all_intermediate_layers.png)
 
 <p align="center">
   <img src=images/all_intermediate_layers.png />
