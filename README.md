@@ -2,12 +2,9 @@
 
 ### Authors: Eric Denbin & Jesse Markowitz
 
-![healthy vs penumonia cxr](images/healthy_vs_pneumonia_cxr.png)
-
 <p align="center">
   <img src=images/healthy_vs_pneumonia_cxr.png />
 </p>
-
 
 ## Business Understanding
 
