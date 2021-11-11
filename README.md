@@ -12,8 +12,6 @@ Pneumonia is the presence of liquid in the lungs as a result of bacterial or vir
 
 Pneumonia can also be difficult to diagnose as there is no "gold standard" indication for it. Medical professionals use a combination of symptoms and scans, such as chest x-rays (CXR) to make a positive diagnosis.
 
-<img src="images/infographic-pediatricpneumonia.jpg" alt="pneumonia infographic from WHO" width="400"/>
-
 <p align="center">
   <img src='images/infographic-pediatricpneumonia.jpg' alt="pneumonia infographic from WHO" width="400" />
 </p>
@@ -53,16 +51,28 @@ All images are single-channel (black and white, not RGB) and almost all have an 
 
 ![normal](images/normal_lungs.png)
 
+<p align="center">
+  <img src=images/normal_lungs.png />
+</p>
+
 From Kaggle:
 > The normal chest X-ray depicts clear lungs without any areas of abnormal opacification in the image. Bacterial pneumonia typically exhibits a focal lobar consolidation \[...] whereas viral pneumonia manifests with a more diffuse ‘‘interstitial’’ pattern in both lungs.
 
 ![pneumonia](images/lungs_with_pneumonia.png)
+
+<p align="center">
+  <img src=images/lungs_with_pneumonia.png />
+</p>
 
 Essentially, this means that bacterial pneumonia typically gathers in one area of the lungs, while viral penumonia is more spread out.
 
 ## Modeling with neural networks
 
 ![fsm](images/dense_nn.png)
+
+<p align="center">
+  <img src=images/dense_nn.png />
+</p>
 
 Our first simple model consists of a basic fully connected dense neural network with only 1 hidden layer, plus an output layer. 
 This model serves mainly as a proof of concept and provides baseline accuracy and recall scores.
@@ -76,6 +86,10 @@ To improve on our first simple model, we iterated over several more models. The 
  - Adding class weights to account for imbalanced classes distribution
 
 ![confusion matrix](images/nn_confusion_matrix.png)
+
+<p align="center">
+  <img src=images/nn_confusion_matrix.png />
+</p>
 
 Our changes to the model both reduced overfitting and increased performance on recall and general accuracy, bringing accuracy up to 94.5% and recall to 95.6%.
 
@@ -94,9 +108,17 @@ Collectively, we iterated on over a dozen models, adjusting these parameters amo
 
 ![final model summary](images/cnn_summary.png)
 
+<p align="center">
+  <img src=images/cnn_summary.png />
+</p>
+
 Below is a diagram of our final model, showing the architecture of the layers, as well as images surfaced from the intermediate layers. This shows that our model is attending to features located within the lungs on the x-ray images.
 
 ![cnn diagram with intermediate layers](images/cnn_diagram.png)
+
+<p align="center">
+  <img src=images/cnn_diagram.png />
+</p>
 
 This diagram was created with [Net2Vis](https://github.com/viscom-ulm/Net2Vis) -- A Visual Grammar for Automatically Generating Publication-Tailored CNN Architecture Visualizations (Alex Bäuerle, Christian van Onzenoodt, and Timo Ropinski at Cornell University)
 
@@ -106,6 +128,10 @@ This diagram was created with [Net2Vis](https://github.com/viscom-ulm/Net2Vis) -
 Our model performed very well by our primary metric (recall), but has a lower accuracy on the testing set than on the validation set. The number of false positives is higher than we expected or would want, so futher iterations of the model would focus on lowering that number. It may even be possible to train another model specifically on misclassified images. The following shows the confusion matrix results after evaluating on our holdout (test) dataset.
 
 ![final confusion matrix](images/cnn_confusion.png)
+
+<p align="center">
+  <img src=images/cnn_confusion.png />
+</p>
 
 On unseen testing data, our best best model had 98.46% recall and 80.93% accuracy. Out of 624 images in the test set, the model predicted 6 false negatives and 112 false positive, with 506 correct predictions. We suspect that the low accuracy score is due to imbalance in the dataset. Chest X-rays of patients with pneumonia made up 62.5% of the test set, while chest X-rays of healthy patients made up 37.5% of the test set. 
 
@@ -118,7 +144,15 @@ In an effort to uncover the reason behind the high false positive rate, we ident
 
 ![false positive images](images/false_positives.png)
 
+<p align="center">
+  <img src=images/false_positives.png />
+</p>
+
 ![false negative images](images/false_negatives.png)
+
+<p align="center">
+  <img src=images/false_negatives.png />
+</p>
 
 We lack the domain knowledge expertise to identify or interpret patterns in the misclassified images, although there don't seem to be any obvious patterns. Ideally, we would partner with medical professionals to see what patterns may exist that are being caught and misclassified by the model. It is notable that 5 out of the 6 false negatives were identified as showing bacterial pneumonia, which is supposed to be easier to diagnose or identify on a scan than viral pneumonia. This suggests that our model is just being over-sensitive to patterns associated with pneumonia, or is overfit to the training dataset.
 
@@ -130,9 +164,17 @@ The following image shows the first activation layer--in other words, the first 
 
 ![first intermediate layer](images/first_conv_layer.png)
 
+<p align="center">
+  <img src=images/first_conv_layer.png />
+</p>
+
 Now, rather than examining all channels from one layer, let's look at one channel from *each* layer. Note the name above each image to identify which layer of the model it comes from.
 
 ![all layers](images/all_intermediate_layers.png)
+
+<p align="center">
+  <img src=images/all_intermediate_layers.png />
+</p>
 
 A second iteration of these visualizations with another image from the dataset can be found in the notebook. It does not appear from this albiet brief exploration that the model is obviously focusing on any particular irrelevant detail. However, further exploration could uncover systemic errors or other issues in the model. Ideally, we would partner with medical professionals who could help us better assess what features or patterns the model is likely identifying in the normal and target pneumonia class images.
 
