@@ -10,7 +10,7 @@
 
 Pneumonia is the presence of liquid in the lungs as a result of bacterial or viral infection. It is the leading cause of death in children under 5, accounting for 19% of all deaths worldwide in that age range. 
 
-Pneumonia can also be difficult to diagnose as there is no "gold standard" indication for it. Medical professionals use a combination of symptoms and scans, such as chest x-rays (CXR) to make a positive diagnosis.
+Pneumonia can also be difficult to diagnose, as there is no "gold standard" for identifying it. As such, medical professionals use a combination of symptoms and scans, such as chest x-rays (CXR) to make a positive diagnosis.
 
 <p align="center">
   <img src='images/infographic-pediatricpneumonia.jpg' alt="pneumonia infographic from WHO" width="400" />
